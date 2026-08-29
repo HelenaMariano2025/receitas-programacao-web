@@ -50,3 +50,12 @@ th{
     padding: 10px;
     text-align: center;
 }
+
+#meuAmor {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+#meuAmor.fade {
+    opacity: 0;
+}

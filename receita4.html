@@ -6,10 +6,12 @@
    </head>
   
    <body>
-        <div id="meu amor">
+        <div id="meuAmor"></div>
+
+        <div>
             <button id="botaoCarregar">Carregar Cervejas</button>
-            <button id="botaoOrdenar">Mostrar cervejas ordenadas</button>
-            <button id="botaoEmbaralhar">Embaralhar cervejas</button>
+            <button id="botaoOrdenar">Ordenar</button>
+            <button id="botaoEmbaralhar">Embaralhar</button>
         </div>
 
     <script>
@@ -29,54 +31,54 @@
             return `<tr><td>${item}</td></tr>`
         }
 
+        function mostrarCervejas() {
+            let div = document.getElementById("meuAmor");
+
+            let cervejasHtml = cervejas.map(transformar);
+
+            div.innerHTML = `
+                <table class="tabela-cervejas">
+                    <tr>
+                        <th>Cerveja</th>
+                    </tr>
+                    ${cervejasHtml.join("\n")}
+                </table>
+            `;
+        }
+
+
         function carregarDiv(){
-            let div = document.getElementById("meu amor")
+            let div = document.getElementById("meuAmor");
 
-            let cervejasHtml = cervejas.map(transformar) 
+            if (div.innerHTML === "") {
 
-            div.innerHTML = `
-                <table class="tabela-cervejas">
-                    <tr>
-                        <th>Cerveja</th>
-                    </tr>
-                    ${cervejasHtml.join("\n")}
-                </table>
-            `
+                div.classList.add("fade");
 
+                setTimeout(function() {
+                    mostrarCervejas();
+                    div.classList.remove("fade");
+                }, 300);
+
+            } else {
+
+                div.classList.add("fade");
+
+                setTimeout(function() {
+                    div.innerHTML = "";
+                    div.classList.remove("fade");
+                }, 300);
+            }
         }
 
-            function ordenarCervejas() {
+        function ordenarCervejas() {
             cervejas.sort();
+            mostrarCervejas();
 
-            let div = document.getElementById("meu amor");
-
-            let cervejasHtml = cervejas.map(transformar);
-
-            div.innerHTML = `
-                <table class="tabela-cervejas">
-                    <tr>
-                        <th>Cerveja</th>
-                    </tr>
-                    ${cervejasHtml.join("\n")}
-                </table>
-            `;
         }
 
-            function embaralharCervejas() {
+        function embaralharCervejas() {
             cervejas.sort(() => Math.random() - 0.5);
-
-            let div = document.getElementById("meu amor");
-
-            let cervejasHtml = cervejas.map(transformar);
-
-            div.innerHTML = `
-                <table class="tabela-cervejas">
-                    <tr>
-                        <th>Cerveja</th>
-                    </tr>
-                    ${cervejasHtml.join("\n")}
-                </table>
-            `;
+            mostrarCervejas();
         }
 
         let botao = document.getElementById("botaoCarregar")
