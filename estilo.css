@@ -1,0 +1,35 @@
+p.mote{
+    color: red;
+}
+
+p.verso{
+    color: blue;
+}
+
+a{  
+    color: blue;
+}
+
+a:visited{
+    color: purple;
+}
+
+a:hover{
+    color: red;
+}
+
+th{
+    background-color: violet;
+}
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.poeta img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
