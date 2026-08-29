@@ -6,9 +6,12 @@
    </head>
   
    <body>
-      <div id="meu amor"><button id="botaoCarregar">Carregando cervejas...</button></div>            
-      <button id="botaoOrdenar">Mostrar cervejas ordenadas</button> 
-   
+        <div id="meu amor">
+            <button id="botaoCarregar">Carregar Cervejas</button>
+            <button id="botaoOrdenar">Mostrar cervejas ordenadas</button>
+            <button id="botaoEmbaralhar">Embaralhar cervejas</button>
+        </div>
+
     <script>
         let cervejas = [
             "Guinness",
@@ -59,11 +62,32 @@
             `;
         }
 
+            function embaralharCervejas() {
+            cervejas.sort(() => Math.random() - 0.5);
+
+            let div = document.getElementById("meu amor");
+
+            let cervejasHtml = cervejas.map(transformar);
+
+            div.innerHTML = `
+                <table class="tabela-cervejas">
+                    <tr>
+                        <th>Cerveja</th>
+                    </tr>
+                    ${cervejasHtml.join("\n")}
+                </table>
+            `;
+        }
+
         let botao = document.getElementById("botaoCarregar")
         botao.addEventListener("click", carregarDiv)   
         
         let botaoOrdenar = document.getElementById("botaoOrdenar");
         botaoOrdenar.addEventListener("click", ordenarCervejas);
+
+        let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
+        botaoEmbaralhar.addEventListener("click", embaralharCervejas);
+
 
     </script>
 
