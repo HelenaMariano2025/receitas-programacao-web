@@ -12,7 +12,7 @@
    <script>
       let cervejas = ["Guiness", "Desperados", "Becks"] 
       function transformar(item){
-         return `<div class="cerveja">${item}</div>`
+         return `<tr><td>${item}</td></tr>`
       }
 
       function carregarDiv(){
@@ -20,7 +20,14 @@
 
          let cervejasHtml = cervejas.map(transformar) 
 
-         div.innerHTML = `${cervejasHtml.join("\n")}`
+         div.innerHTML = `
+            <table class="tabela-cervejas">
+                <tr>
+                    <th>Cerveja</th>
+                </tr>
+                ${cervejasHtml.join("\n")}
+            </table>
+        `
 
       }
 
