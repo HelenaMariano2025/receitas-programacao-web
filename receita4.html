@@ -7,32 +7,65 @@
   
    <body>
       <div id="meu amor"><button id="botaoCarregar">Carregando cervejas...</button></div>            
-   </body>   
+      <button id="botaoOrdenar">Mostrar cervejas ordenadas</button> 
    
-   <script>
-      let cervejas = ["Guiness", "Desperados", "Becks"] 
-      function transformar(item){
-         return `<tr><td>${item}</td></tr>`
-      }
+    <script>
+        let cervejas = [
+            "Guinness",
+            "Heineken",
+            "Budweiser",
+            "Stella Artois",
+            "Corona",
+            "Beck's",
+            "Paulaner",
+            "Hoegaarden",
+            "Carlsberg",
+            "Peroni"
+        ]; 
+        function transformar(item){
+            return `<tr><td>${item}</td></tr>`
+        }
 
-      function carregarDiv(){
-         let div = document.getElementById("meu amor")
+        function carregarDiv(){
+            let div = document.getElementById("meu amor")
 
-         let cervejasHtml = cervejas.map(transformar) 
+            let cervejasHtml = cervejas.map(transformar) 
 
-         div.innerHTML = `
-            <table class="tabela-cervejas">
-                <tr>
-                    <th>Cerveja</th>
-                </tr>
-                ${cervejasHtml.join("\n")}
-            </table>
-        `
+            div.innerHTML = `
+                <table class="tabela-cervejas">
+                    <tr>
+                        <th>Cerveja</th>
+                    </tr>
+                    ${cervejasHtml.join("\n")}
+                </table>
+            `
 
-      }
+        }
 
-      let botao = document.getElementById("botaoCarregar")
-      botao.addEventListener("click", carregarDiv)                 
+            function ordenarCervejas() {
+            cervejas.sort();
 
-   </script>
+            let div = document.getElementById("meu amor");
+
+            let cervejasHtml = cervejas.map(transformar);
+
+            div.innerHTML = `
+                <table class="tabela-cervejas">
+                    <tr>
+                        <th>Cerveja</th>
+                    </tr>
+                    ${cervejasHtml.join("\n")}
+                </table>
+            `;
+        }
+
+        let botao = document.getElementById("botaoCarregar")
+        botao.addEventListener("click", carregarDiv)   
+        
+        let botaoOrdenar = document.getElementById("botaoOrdenar");
+        botaoOrdenar.addEventListener("click", ordenarCervejas);
+
+    </script>
+
+   </body>
 </html>
