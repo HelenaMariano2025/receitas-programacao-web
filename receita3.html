@@ -4,20 +4,36 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
+        <style>
+            #meuAmor {
+                opacity: 1;
+                transition: opacity 1s;
+            }
+
+            #meuAmor.fade {
+                opacity: 0;
+            }
+        </style>
     </head>
     <body>
-        <div id="meu amor"></div>
+        <div id="meuAmor"></div>
         <div><button id="botaoCarregar">Carregar Cervejas</button></div>
     </body>
     <script>
         function carregarDiv(){
-            let div = document.getElementById("meu amor");
+            let div = document.getElementById("meuAmor");
 
-            if (div.innerHTML === "") {
-                div.innerHTML = "<h1>Guinness</h1>";
-            } else {
-                div.innerHTML = "";
-            }
+            div.classList.add("fade");
+            setTimeout(function() {
+
+                if (div.innerHTML === "") {
+                    div.innerHTML = "<h1>Guinness</h1>";
+                } else {
+                    div.innerHTML = "";
+                }
+                div.classList.remove("fade");
+            }, 1000);
         }
 
         let botao = document.getElementById("botaoCarregar");
