@@ -16,33 +16,50 @@
          let cervejas = [
             {
                name: "Guiness",
-               alcohol: "10%"
+               alcohol: "10%",
+               style: "Imperial Stout",
+               ibu: "60"
             },
             {
                name: "Desperados",
-               alcohol: "6%"
+               alcohol: "6%",
+               style: "Lager",
+               ibu: "20"
             },
             {
                name: "Becks",
-               alcohol: "5%"
+               alcohol: "5%",
+               style: "Pilsen",
+               ibu: "25"
             }
          ];
 
-         const carregarDiv = (cs, id = "cervejasDiv") => {
+         const carregarDiv = (
+            cs,
+            id = "cervejasDiv",
+            hNome = "Nome",
+            hAlcool = "Álcool",
+            hEstilo = "Estilo",
+            hAmargor = "Amargor"
+         ) => {
             const div = document.getElementById(id);
 
             const itensHtml = cs.map(item =>
                `<tr>
                   <td>${item["name"]}</td>
                   <td>${item["alcohol"]}</td>
+                  <td>${item["style"]}</td>
+                  <td>${item["ibu"]}</td>
                </tr>`
             );
 
             div.innerHTML = `
                <table class="tabela-cervejas">
                   <tr>
-                     <th>Nome</th>
-                     <th>Álcool</th>
+                     <th>${hNome}</th>
+                     <th>${hAlcool}</th>
+                     <th>${hEstilo}</th>
+                     <th>${hAmargor}</th>
                   </tr>
                   ${itensHtml.join("\n")}
                </table>
