@@ -9,9 +9,9 @@
       <div id="meuAmor"></div>
 
       <div>
-         <button id="botaoCarregar">Carregar Sorvetes</button>
-         <button id="botaoOrdenar">Ordenar</button>
-         <button id="botaoEmbaralhar">Embaralhar</button>
+         <a href="#" id="botaoCarregar">Carregar Sorvetes</a>
+         <a href="#" id="botaoOrdenar">Ordenar</a>
+         <a href="#" id="botaoEmbaralhar">Embaralhar</a>
       </div>
 
       <script>
@@ -86,13 +86,22 @@
          };
 
          let botao = document.getElementById("botaoCarregar");
-         botao.addEventListener("click", () => carregarDiv(sorvetes));
+         botao.addEventListener("click", (evento) => {
+            evento.preventDefault();
+            carregarDiv(sorvetes);
+         });
 
          let botaoOrdenar = document.getElementById("botaoOrdenar");
-         botaoOrdenar.addEventListener("click", ordenarSorvetes);
+         botaoOrdenar.addEventListener("click", (evento) => {
+            evento.preventDefault();
+            ordenarSorvetes();
+         });
 
          let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
-         botaoEmbaralhar.addEventListener("click", embaralharSorvetes);
+         botaoEmbaralhar.addEventListener("click", (evento) => {
+            evento.preventDefault();
+            embaralharSorvetes();
+         });
       </script>
    </body>
 </html>
