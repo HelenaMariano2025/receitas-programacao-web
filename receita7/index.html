@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receita 7</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+
+    <div>
+        <a href="#" id="botaoCarregar">Carregar usuários</a>
+    </div>
+
+    <div id="usuariosDiv"></div>
+
+    <script>
+
+        let usuarios = [];
+
+        const carregarDiv = (us) => {
+            const div = document.getElementById("usuariosDiv");
+
+            const itensHtml = us.map(({ fullName, age, email, phone }) => `
+                <tr>
+                    <td>${fullName}</td>
+                    <td>${age}</td>
+                    <td>${email}</td>
+                    <td>${phone}</td>
+                </tr>
+            `);
+
+            div.innerHTML = `
+                <table class="tabela-cervejas">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                    </tr>
+                    ${itensHtml.join("\n")}
+                </table>
+            `;
+        };
+
+        const carregarUsuarios = async () => {
+
+            try {
+
+                let res = await fetch(
+                    "https://randomapi.dev/api/users?count=5"
+                );
+
+                let dados = await res.json();
+
+                usuarios = dados.data;
+
+                carregarDiv(usuarios);
+
+            } catch (err) {
+
+                document.getElementById("usuariosDiv").innerHTML =
+                    "Não foi possível carregar os usuários.";
+
+            }
+
+        };
+
+        let botao = document.getElementById("botaoCarregar");
+
+        botao.addEventListener("click", (evento) => {
+            evento.preventDefault();
+            carregarUsuarios();
+        });
+
+    </script>
+
+</body>
+</html>
