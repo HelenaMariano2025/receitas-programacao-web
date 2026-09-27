@@ -2,26 +2,97 @@
 <html>
    <head>
       <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../estilo.css">
    </head>
 
    <body>
+      <div id="meuAmor"></div>
+
       <div>
-         <button id="botaoCarregar">Carregando cervejas...</button>
+         <button id="botaoCarregar">Carregar Sorvetes</button>
+         <button id="botaoOrdenar">Ordenar</button>
+         <button id="botaoEmbaralhar">Embaralhar</button>
       </div>
 
-      <div id="meu amor"></div>
-
       <script>
-         let cervejas = ["Guiness", "Desperados", "Becks"]
+         let sorvetes = [
+            "Chocolate",
+            "Morango",
+            "Baunilha",
+            "Napolitano",
+            "Flocos",
+            "Creme",
+            "Pistache",
+            "Menta"
+         ];
 
-         const carregarDiv = (cervs) => {
-            const div = document.getElementById("meu amor")
-            const cervejasHtml = cervs.map(item => `<h1>${item}</h1>`)
-            div.innerHTML = `${cervejasHtml.join("\n")}`
-         }
+         const transformar = (item) => {
+            return `<tr><td>${item}</td></tr>`;
+         };
 
-         let botao = document.getElementById("botaoCarregar")
-         botao.addEventListener("click", () => carregarDiv(cervejas))
+         const mostrarSorvetes = () => {
+            let div = document.getElementById("meuAmor");
+
+            let sorvetesHtml = sorvetes.map(transformar);
+
+            div.innerHTML = `
+               <table class="tabela-cervejas">
+                  <tr>
+                     <th>Sorvete</th>
+                  </tr>
+                  ${sorvetesHtml.join("\n")}
+               </table>
+            `;
+         };
+
+         const carregarDiv = (sorv) => {
+            let div = document.getElementById("meuAmor");
+
+            if (div.innerHTML === "") {
+               div.classList.add("fade");
+
+               setTimeout(() => {
+                  let sorvetesHtml = sorv.map(transformar);
+
+                  div.innerHTML = `
+                     <table class="tabela-cervejas">
+                        <tr>
+                           <th>Sorvete</th>
+                        </tr>
+                        ${sorvetesHtml.join("\n")}
+                     </table>
+                  `;
+
+                  div.classList.remove("fade");
+               }, 300);
+            } else {
+               div.classList.add("fade");
+
+               setTimeout(() => {
+                  div.innerHTML = "";
+                  div.classList.remove("fade");
+               }, 300);
+            }
+         };
+
+         const ordenarSorvetes = () => {
+            sorvetes.sort();
+            mostrarSorvetes();
+         };
+
+         const embaralharSorvetes = () => {
+            sorvetes.sort(() => Math.random() - 0.5);
+            mostrarSorvetes();
+         };
+
+         let botao = document.getElementById("botaoCarregar");
+         botao.addEventListener("click", () => carregarDiv(sorvetes));
+
+         let botaoOrdenar = document.getElementById("botaoOrdenar");
+         botaoOrdenar.addEventListener("click", ordenarSorvetes);
+
+         let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
+         botaoEmbaralhar.addEventListener("click", embaralharSorvetes);
       </script>
    </body>
 </html>
