@@ -40,16 +40,20 @@
             hNome = "Nome",
             hAlcool = "Álcool",
             hEstilo = "Estilo",
-            hAmargor = "Amargor"
+            hAmargor = "Amargor",
+            pNome = "name",
+            pAlcool = "alcohol",
+            pEstilo = "style",
+            pAmargor = "ibu"
          ) => {
             const div = document.getElementById(id);
 
             const itensHtml = cs.map(item =>
                `<tr>
-                  <td>${item["name"]}</td>
-                  <td>${item["alcohol"]}</td>
-                  <td>${item["style"]}</td>
-                  <td>${item["ibu"]}</td>
+                  <td>${item[pNome]}</td>
+                  <td>${item[pAlcool]}</td>
+                  <td>${item[pEstilo]}</td>
+                  <td>${item[pAmargor]}</td>
                </tr>`
             );
 
