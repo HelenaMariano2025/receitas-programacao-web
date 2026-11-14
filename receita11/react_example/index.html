@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>React - Componentes com Classes</title>
+
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f4f2;
+            margin: 0;
+            padding: 30px;
+         }
+
+         #app {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+         }
+
+         h1 {
+            color: #6f1d35;
+            margin-bottom: 30px;
+         }
+
+         h2 {
+            color: #6f1d35;
+            margin-top: 30px;
+         }
+
+         .tabela-bebidas {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+         }
+
+         .tabela-bebidas th {
+            background-color: #6f1d35;
+            color: white;
+            padding: 14px;
+         }
+
+         .tabela-bebidas td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+         }
+
+         .tabela-bebidas tbody tr:nth-child(even) {
+            background-color: #f2e6e9;
+         }
+
+         .tabela-bebidas tbody tr:hover {
+            background-color: #ead1d8;
+         }
+
+         .botao-exibir {
+            background-color: #6f1d35;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+         }
+
+         .botao-exibir:hover {
+            background-color: #4d1325;
+         }
+      </style>
+   </head>
+
+   <body>
+      <div id="app"></div>
+
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+      <script src="libs/babel.js"></script>
+
+      <script type="text/babel">
+
+         const bebidas = [
+            {
+               nome: "Havana",
+               marca: "Engenho Anísio Santiago"
+            },
+            {
+               nome: "Seleta",
+               marca: "Engenho Seleta"
+            },
+            {
+               nome: "Boazinha",
+               marca: "Engenho Boazinha"
+            }
+         ];
+
+         class Cabecalho extends React.Component {
+            render() {
+               return <h1>Minha tabela de bebidas</h1>;
+            }
+         }
+
+         class TabelaBebidas extends React.Component {
+            render() {
+               return (
+                  <div>
+                     <h2>{this.props.titulo}</h2>
+
+                     <table className="tabela-bebidas">
+                        <thead>
+                           <tr>
+                              <th>Nome</th>
+                              <th>Marca</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>Havana</td>
+                              <td>Engenho Anísio Santiago</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               );
+            }
+         }
+
+         class TabelaBebidasDados extends React.Component {
+            render() {
+               return (
+                  <table className="tabela-bebidas">
+                     <thead>
+                        <tr>
+                           <th>Nome</th>
+                           <th>Marca</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {bebidas.map(function(bebida) {
+                           return (
+                              <tr key={bebida.nome}>
+                                 <td>{bebida.nome}</td>
+                                 <td>{bebida.marca}</td>
+                              </tr>
+                           );
+                        })}
+                     </tbody>
+                  </table>
+               );
+            }
+         }
+
+         function ExibirTabela() {
+            ReactDOM.render(
+               <TabelaBebidasDados />,
+               document.getElementById("resultado")
+            );
+         }
+
+         ReactDOM.render(
+            <div>
+               <Cabecalho />
+
+               <TabelaBebidas titulo="Tabela de Cana" />
+
+               <h2>Lista de bebidas</h2>
+
+               <button className="botao-exibir" onClick={ExibirTabela}>
+                  Mostrar bebidas
+               </button>
+
+               <div id="resultado"></div>
+            </div>,
+            document.getElementById("app")
+         );
+
+      </script>
+   </body>
+</html>
