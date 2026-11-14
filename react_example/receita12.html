@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receita React - 12</title>
+
+    <style>
+        body {
+            background-color: #f8f4f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 30px;
+        }
+
+        #app {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6f1d35;
+        }
+
+        .tabela-bebidas {
+            width: 100%;
+            background-color: white;
+            border-collapse: collapse;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .tabela-bebidas th {
+            background-color: #6f1d35;
+            color: white;
+            padding: 14px;
+        }
+
+        .tabela-bebidas td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tabela-bebidas tr:nth-child(even) {
+            background-color: #f2e6e9;
+        }
+
+        .tabela-bebidas tr:hover {
+            background-color: #ead1d8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+
+    <script type="text/babel">
+
+        const valoresCabecalhos = ["Nome", "Marca", "Preço"];
+
+        const valoresBebidas = [
+            ["Havana", "Engenho Anísio Santiago", "R$ 150,00"],
+            ["Seleta", "Engenho Seleta", "R$ 40,00"],
+            ["Boazinha", "Engenho Boazinha", "R$ 35,00"]
+        ];
+
+        const TabelaBebidas = ({titulo, cabecalhos, bebidas}) => {
+            return (
+                <div>
+                    <h1>{titulo}</h1>
+
+                    <table className="tabela-bebidas">
+                        <thead>
+                            <tr>
+                                {cabecalhos.map((cabecalho, index) => (
+                                    <th key={index}>{cabecalho}</th>
+                                ))}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {bebidas.map((bebida, index) => (
+                                <tr key={index}>
+                                    {bebida.map((valor, coluna) => (
+                                        <td key={coluna}>{valor}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        };
+
+        ReactDOM.render(
+            <TabelaBebidas
+                titulo="Minha tabela de bebidas preferidas"
+                cabecalhos={valoresCabecalhos}
+                bebidas={valoresBebidas}
+            />,
+            document.getElementById("app")
+        );
+
+    </script>
+</body>
+</html>
