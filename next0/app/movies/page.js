@@ -1,7 +1,13 @@
 export default async function Home({ searchParams }) {
-    const { titleSearchKey = "bagdad" } = await searchParams;
+    const {
+        titleSearchKey = "bagdad",
+        yearSearchKey = ""
+    } = await searchParams;
+
+    const yearParam = yearSearchKey ? `&y=${yearSearchKey}` : "";
+
     const res = await fetch(
-        `https://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${encodeURIComponent(titleSearchKey)}`
+        `https://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${encodeURIComponent(titleSearchKey)}${yearParam}`
     );
 
     const data = await res.json();
