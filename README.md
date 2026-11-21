@@ -1,11 +1,58 @@
 # Receitas de Programação Web
 
-Repositório desenvolvido para as atividades da disciplina de Programação Web.
+Repositório destinado às atividades e aos exercícios da disciplina de Programação Web.
 
-## Estrutura do projeto
+## Receitas
 
-As receitas estão organizadas de acordo com as tecnologias e atividades desenvolvidas.
+### HTML e CSS
+- [Receita 1](receita1/)
+- [Receita 2](receita2/)
+- [Receita 3](receita3/)
+- [Receita 4](receita4/)
+- [Receita 5](receita5/)
+- [Receita 6](receita6/)
+- [Receita 7](receita7/)
+- [Receita 8](receita8/)
 
+### React
+- [Receitas 9 a 12](react_example/)
+
+### Next.js
+- [Receitas 13 a 21](next0/)
+
+## Tecnologias utilizadas
+
+- HTML
+- CSS
+- JavaScript
+- React
+- Next.js
+- Supabase
+
+## Como executar o projeto Next.js
+
+No terminal, acesse a pasta `next0` e execute:
+
+```bash
+npm install
+npm run dev
+```
+
+Depois, acesse http://localhost:3000 no navegador.
+
+Para gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+Para executar a versão compilada:
+
+```bash
+npm run start
+```
+
+## Estrutura geral do projeto
 
 ```text
 receitas-programacao-web/
@@ -31,10 +78,28 @@ receitas-programacao-web/
 │
 ├── next0/
 │   ├── app/
-│   │   ├── Componentes.js
-│   │   ├── layout.js
-│   │   ├── page.js
-│   │   ├── rota1/
+│   │   ├── actions/
+│   │   │   └── movieActions.js
+│   │   ├── api/
+│   │   │   ├── movies/
+│   │   │   │   └── route.js
+│   │   │   └── searchMovies/
+│   │   │       └── route.js
+│   │   ├── clientMovies1/
+│   │   │   └── page.js
+│   │   ├── clientMovies2/
+│   │   │   └── page.js
+│   │   ├── clientServerMovies/
+│   │   │   └── page.js
+│   │   ├── movie/
+│   │   │   └── [id]/
+│   │   │       ├── page.js
+│   │   │       └── loading.js
+│   │   ├── movieSearch/
+│   │   │   ├── FormularioPesquisa.js
+│   │   │   └── page.js
+│   │   ├── movies/
+│   │   │   ├── layout.js
 │   │   │   └── page.js
 │   │   ├── novarota/
 │   │   │   ├── componentes.js
@@ -42,56 +107,25 @@ receitas-programacao-web/
 │   │   │   ├── page.js
 │   │   │   └── sobre/
 │   │   │       └── page.js
-│   │   ├── movies/
-│   │   │   ├── layout.js
+│   │   ├── rota1/
 │   │   │   └── page.js
-│   │   └── movieSearch/
-│   │       ├── FormularioPesquisa.js
-│   │       └── page.js
-│   ├── .gitignore
+│   │   ├── Componentes.js
+│   │   ├── layout.js
+│   │   └── page.js
+│   │
+│   ├── lib/
+│   │   └── supabase.js
+│   ├── next.config.js
 │   ├── package.json
-│   └── package-lock.json
+│   ├── package-lock.json
+│   └── .gitignore
 │
 ├── estilo.css
 ├── index.html
-├── joao_paraibano.jpg
 └── README.md
-``` 
+```
 
-Cada receita `receita1/` até `receita8/` está organizada em um diretório próprio:
+*Observação: a estrutura acima destaca os principais arquivos e diretórios relacionados às receitas. Arquivos auxiliares e configurações adicionais podem existir no projeto.*
 
-- `receita1/` — Receita 1
-- `receita2/` — Receita 2
-- `receita3/` — Receita 3
-- `receita4/` — Receita 4
-- `receita5/` — Receita 5
-- `receita6/` — Receita 6
-- `receita7/` — Receita 7
-- `receita8/` — Receita 8
-- `react_example/` — Exemplos práticos das Receitas 9 a 12, utilizando React.
-- `next0/` — Projeto Next.js desenvolvido a partir da Receita 13.
 
-### Projeto Next.js
-
-O diretório `next0/` contém a aplicação desenvolvida nas receitas 13 a 17, com as seguintes funcionalidades:
-
-- Criação de páginas e rotas.
-- Componentes reutilizáveis.
-- Propriedades entre componentes.
-- Layouts e navegação entre páginas.
-- Busca de filmes utilizando a API OMDb.
-- Exibição de resultados e pôsteres de filmes.
-- Formulário de pesquisa por título e ano de lançamento.
-
-A página principal do projeto contém links para acessar as receitas.
-
-## Tecnologias
-
-- HTML
-- CSS
-- JavaScript
-- React
-- Next.js
-- Node.js e npm
-- APIs (OMDb)
-- Git e GitHub
+---
