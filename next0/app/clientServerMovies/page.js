@@ -2,6 +2,7 @@
 
 import { searchMovies } from "../actions/movieActions"
 import Form from "next/form"
+import Link from "next/link"
 import { useState, memo } from "react"
 import { useFormStatus } from "react-dom"
 
@@ -92,7 +93,14 @@ const MovieTable = memo(function MovieTable({ movies }) {
                 <div style={styles.movieGrid}>
                     {movies.map((m) => (
                         <div key={m.imdbID} style={styles.movieCard}>
-                            <h3 style={styles.movieTitle}>{m.Title}</h3>
+                            <h3 style={styles.movieTitle}>
+                                <Link
+                                    href={`/movie/${m.imdbID}`}
+                                    style={{ color: "inherit", textDecoration: "none" }}
+                                >
+                                    {m.Title}
+                                </Link>
+                            </h3>
                             <p style={styles.movieYear}>{m.Year}</p>
                         </div>
                     ))}

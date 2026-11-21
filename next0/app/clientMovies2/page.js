@@ -2,6 +2,7 @@
 "use client"
 
 import Form from "next/form"
+import Link from "next/link"
 import { useState, memo } from "react"
 import { useFormStatus } from "react-dom"
 
@@ -93,7 +94,14 @@ export const MovieTable = memo(function MovieTable({ movies }) {
                 <div style={styles.grid}>
                     {movies.map((movie) => (
                         <div key={movie.imdbID} style={styles.card}>
-                            <h3 style={styles.movieTitle}>{movie.Title}</h3>
+                            <h3 style={styles.movieTitle}>
+                                <Link
+                                    href={`/movie/${movie.imdbID}`}
+                                    style={{ color: "inherit", textDecoration: "none" }}
+                                >
+                                    {movie.Title}
+                                </Link>
+                            </h3>
                             <p style={styles.year}>Ano: {movie.Year}</p>
                         </div>
                     ))}
